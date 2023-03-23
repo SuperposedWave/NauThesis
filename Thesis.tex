@@ -1,0 +1,202 @@
+\documentclass{NauThesis}
+
+
+
+\begin{document}
+\ZhCover{MG2008123}{南京审计大学硕士毕业论文\LaTeX 模板}{统计与数据科学学院}{统计学}{数理统计}{学术硕士}{周小明}{王小刚教授}{2023.02.10}
+\EnCover{\LaTeX Template for Nanjing Audit University Master Thesis}{Academic}{Mathematical Statistics}{ZHOU Xiaoming}{Professor Wang Xiaogang}{Statistics and Data Science}{February 2023}
+\Statement
+
+\begin{ZhAbstract}
+    本模板基于《南京审计大学硕士研究生学位论文格式规范》的格式要求制作，为需要使用\LaTeX 撰写研究生毕业论文的同学提供一个方便省心的毕业论文撰写环境。注意，（1）本模板处于调试阶段，可能（一定）存在不符合格式规范的地方。（2）请向学院和导师确认是否可以提交pdf版本的毕业论文。
+
+    \ZhKeywords \LaTeX；研究生；模板
+\end{ZhAbstract}
+
+\begin{EnAbstract}
+    This template is based on the formatting requirements of the Master's Degree Thesis Format Specification of Nanjing Audit University, and provides a convenient and hassle-free thesis writing environment for students who need to use \LaTeX to write their graduate theses. Note that (1) this template is in the debugging stage, and there may (must) be areas that do not conform to the formatting specifications. (2) Please check with your faculty and supervisor to see if you can submit a pdf version of your thesis.
+
+    \EnKeywords \LaTeX, Graduate Students, Templates
+\end{EnAbstract}
+
+
+\TableOfContents
+% \tableofcontents
+\mainpagestyle
+\setcounter{page}{1}
+
+\chapter{绪言}
+
+\section{\LaTeX 介绍}
+
+\LaTeX 是一种基于\TeX 的排版系统，由美国计算机学家莱斯利·兰伯特（Leslie Lamport）在20世纪80年代初期开发，利用这种格式，即使使用者没有排版和程序设计的知识也可以充分发挥由\TeX 所提供的强大功能，能在几天，甚至几小时内生成很多具有书籍质量的印刷品。对于生成复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。这个系统同样适用于生成从简单的信件到完整书籍的所有其他种类的文档\footnote{摘自百度百科}。如果想有更多的了解，可以看看比较经典的入门教程。
+
+\LaTeX 的最强大之处在于可以轻松的编辑公式，只需要学习简单的语法就可以写出很复杂的公式。
+\begin{equation} \label{mfm}
+	\left(\mathbf{X}_t\right)_{p_1 \times p_2}=(\mathbf{R})_{p_1 \times k_1}\left(\mathbf{F}_t\right)_{k_1 \times k_2}\left(\mathbf{C}^{\top}\right)_{k_2 \times p_2}+\left(\mathbf{E}_t\right)_{p_1 \times p_2}, \quad t=1, \ldots, T,
+\end{equation}
+
+下文给出常见的公式环境。
+
+\begin{theorem}[由矩母函数导出的不等式] \label{thm1}
+	如果一个随机变量存在矩母函数 $\phi(\lambda)=\mathbb{E}\left[e^{\lambda X}\right]$，那么对于所有$\lambda>0$，有
+	\begin{equation}
+		P(X \geq t) \leq \frac{E\left[e^{\lambda X}\right]}{e^{\lambda t}}=\phi(\lambda) e^{-\lambda t}
+	\end{equation}
+	
+\end{theorem}
+\begin{proof}
+	易得
+	\begin{equation}
+		P(X \geq t)=P\left(e^{\lambda X} \geq e^{\lambda t}\right) \leq \frac{\mathbb{E} \exp (\lambda X)}{\exp (\lambda t)}
+	\end{equation}
+\end{proof}
+
+\begin{remark}
+	定理 \ref{thm1} 是一个非常重要的定理，因为其驱使我们考虑其他更多的存在上有界矩母函数的的随机变量，进一步的
+	\begin{equation}
+		P(X-\mathbb{E} X>t)=P\left(\exp (\lambda(X-\mathbb{E} X)>\exp (\lambda t)) \leq \frac{\mathbb{E} \exp (\lambda(X-\mathbb{E} X))}{\exp (\lambda t)}\right)
+	\end{equation}
+	也是该类不等式的标准方法。
+\end{remark}
+
+\begin{enumerate}[label={(\arabic*)}]
+    \item test 1
+    \item test 2
+\end{enumerate}
+
+下简单测试一些参考文献引用：
+
+引用年份：\citet{__2006}
+
+引用作者：\citep{tsui_multidimensional_1995}
+
+引用多篇文献：\citep{_20132018_2021,__2006,maasoumi_measurement_1986,kolm_multidimensional_1977}
+
+\chapter{图片与表格}
+\section{图片}
+论文中图是很重要的，俗语曰：“一图胜千言，有图有真相”，总之，有图，言者能言之凿凿，观者能察之切切。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figs/color/china1.png}
+    \caption{中国地图展示}
+    \label{nuist_face}
+\end{figure}
+
+
+大家在做论文时的时候经常需要两幅图并排的情况，下面来看看\LaTeX 是怎样精确控制并排图片占位大小的，从而使其各占一半水平空间。如图~\ref{cn_map}~：
+
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figs/color/china1.png}\includegraphics[width=0.5\textwidth]{figs/color/china2.png}
+    \caption{中国地图展示（左图为素颜，右图为彩妆）}
+    \label{cn_map}
+\end{figure}
+
+是不是感觉图~\ref{cn_map}~的标题不太专业，也想给左右两个子图各加一个标题？那其实也很简单，模板引入了subfigure宏包实现。实现后效果如图~\ref{subfig_cn_map}~：
+
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[素颜\label{fig:sub1}]{\includegraphics[width=0.5\textwidth]{figs/color/china1.png}}\subfigure[彩妆\label{fig:sub2}]{\includegraphics[width=0.5\textwidth]{figs/color/china2.png}}
+    \caption{中国地图展示}
+    \label{subfig_cn_map}
+\end{figure}
+
+当然我们在引用的时候,可以引用母图，如图~\ref{subfig_cn_map}~，也可以引用子图，如图~\ref{subfig_cn_map}\subref{fig:sub1}~，图~\ref{subfig_cn_map}\subref{fig:sub2}~。
+
+\section{表格}
+
+\LaTeX 中生成简单的表格还是比较方便的，可以用tabular 环境来实现。模板引入了 booktabs 包实现三线表样式，下面就来做一个论文中经常用到的三线表,如表~\ref{table_1}~。
+
+\begin{table}[htbp!]
+    \centering
+    \caption{本模板中部分使用的宏包及功能}
+    % \captionwithnotes{本模板中部分使用的宏包及功能}{测试一下注释功能}
+    \label{table_1}
+    \begin{tabular}{ccccccccc}
+        \toprule
+        宏包名称 & amsmath  & caption  & geometry & ulem   & xcolor & setspace & hyperref \\
+        \midrule
+        作用     & 数学公式 & 定制标题 & 页面设置 & 下划线 & 颜色   & 行距     & 超链接   \\
+        -        & -        & -        & -        & -      & -      & -        & -        \\
+        \bottomrule
+    \end{tabular}
+    
+    \begin{tablenotes}
+        \item \zihao{-5} 注：测试一下脚注，太长的脚注如果觉得不美观的话，可以手动设置一下换行，目前没有找到更好\\的解决方法。
+    \end{tablenotes}
+\end{table}
+
+代码与普通表格类似，将 \verb|\hline| 分别换成 \verb|\toprule| \verb|\midrule| \verb|\bottomrule| 即可。
+
+\chapter{常见问题}
+报错 \verb|I found no \\citation commands|：任意引用一篇文献即可。
+
+
+% \begin{thebibliography}{}
+% \setlength{\baselineskip}{10pt}{\setlength\arraycolsep{2pt}}
+% \bibitem{2002chen}
+% 陈宗胜. 关于收入差别倒U曲线及两极分化研究中的几个方法问题[J]. 中国社会科学, 2002, (5): 78-82.
+
+% \bibitem{2009fu}
+% 符淼.地理距离和技术外溢效应—— 对技术和经济集聚现象的空间计量学解释[J]. 经济学(季刊), 2009, (4): 1549-1566.
+
+% \bibitem{2004hu}
+% 胡祖光. 基尼系数理论最佳值及其简易计算公式研究[J]. 经济研究, 2004, (1): 60-69.
+
+
+% \bibitem{2009hu}
+% 胡鞍钢, 刘生龙. 交通运输、经济增长及溢出效应——基于中国省际数据空间经济计量的结果[J]. 中国工业经济, 2009, (5): 5-14.
+
+
+% \bibitem{2014huang}
+% 黄国健, 陈永当, 陈博敏, 胡婷婷. 西安市PM2.5 时空分布模型研究[J]. 环境科学与管理, 2014, (9): 64-66.
+
+
+% \bibitem{2018ji}
+% 纪园园, 宁磊. 相对收入假说下的收入差距对消费影响的研究[J]. 数量经济技术经济研究, 2018, (4): 97-114.
+% \end{thebibliography}
+
+
+\MakeBibliography{References}
+% \renewcommand\appendix{\setcounter{secnumdepth}{-2}}
+% \renewcommand\thesection{\arabic{section}}
+\appendix
+\chapter*{附\quad 录}
+\addcontentsline{toc}{chapter}{附录}
+\counterwithout{figure}{chapter}
+\addtocounter{figure}{0}
+\counterwithout{table}{chapter}
+\addtocounter{table}{0}
+\counterwithout{equation}{chapter}
+\addtocounter{equation}{0}
+
+\section*{测试1}
+\begin{equation}
+\begin{aligned}
+  \alpha + \beta = \gamma
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+    \alpha + \beta = \gamma
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+    \alpha + \beta = \gamma
+\end{aligned}
+\end{equation}
+\section*{测试2}
+
+\begin{ResearchAchievements}
+    这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。这是一个研究成果的测试，测试行间距的问题。
+\end{ResearchAchievements}
+
+\begin{ThanksPage}
+    这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。这是一个致谢的测试，测试行间距的问题。
+\end{ThanksPage}
+\end{document}
